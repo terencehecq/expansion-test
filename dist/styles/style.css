@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: red;
+  color: black;
+  margin: 10px;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: red;
+}
