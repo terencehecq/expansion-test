@@ -1,3 +1,8 @@
+$orange: #EA5B0C;
+$green: #C1DFC4;
+$yellow: #FED386;
+
+
 *{
     margin: 0;
     padding: 0;
@@ -5,9 +10,7 @@
 }
 
 header{
-    background-color: red;
-    color:black;
-    margin: 10px;
+    position: relative;
 
     h1{
         font-size: 3rem;

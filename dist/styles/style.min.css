@@ -1,1 +1,1 @@
-*{margin:0;padding:0;box-sizing:border-box}header{background-color:red;color:#000;margin:10px}header h1{font-size:3rem;color:red;border:1px solid right}
+*{box-sizing:border-box;margin:0;padding:0}header{position:relative}header h1{font-size:3rem;color:red;border:1px solid right}
