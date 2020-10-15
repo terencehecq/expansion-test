@@ -6,15 +6,279 @@ $yellow: #FED386;
 *{
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
+}
+
+body{font-family: 'Poppins', sans-serif;}
+
+em{color: $orange; font-style: normal;}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+    min-height: 50px;
+    background-color: $green;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+
+    &>a{
+        margin-left: 15px;
+        align-self: center;
+        img{
+            height: 7vh;
+            vertical-align: middle;
+        }
+    }
+
+    div.burger{
+        width: 6vh;
+        height: 5vh;
+        position: relative;
+        margin-right: 15px;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+        align-self: center;
+        outline: none;
+
+        span{
+            display: block;
+            position: absolute;
+            height: 1vh;
+            width: 100%;
+            background: $orange;
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        span:nth-child(1) {
+            top: 0.2vh;
+        }
+        span:nth-child(2), span:nth-child(3) {
+            top: 2vh;
+        }
+        span:nth-child(4) {
+            top: 3.8vh;
+        }
+
+        &.open {
+            span:nth-child(1), span:nth-child(4){
+                top: 2vh;
+                width: 0%;
+                left: 50%;
+            }
+            span:nth-child(2){
+                transform: rotate(45deg)
+            }
+            span:nth-child(3){
+                transform: rotate(-45deg)
+            }
+        }
+    }
+
+    div.menu{
+        background-color: $green;
+        position: absolute;
+        right: -100%;
+        top: 7.8vh;
+        width: 100%;
+        height: 93vh;
+        min-height: 550px;
+        text-align: center;
+        padding-top: 30px;
+        transition: all .5s ease ;
+        overflow: scroll;
+
+        &.opened{
+            right: 0;
+        }
+
+        ul{
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul.main_menu{
+            position: relative;
+            font-size: 1.4em;
+            line-height: 2em;
+            margin: 0 0 10%;
+
+            li{
+                margin-bottom: 10px;
+                transition: max-height .5s ease;
+            }
+
+            li ul{
+                margin-top: 10px;
+                line-height: 1.4em;
+                font-size: .8em;
+                font-weight: 300;
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height .5s ease;
+            }
+
+            li ul.main_opened{
+                max-height: 200px;
+                // transition: max-height .5s ease;
+
+            }
+        }
+        ul.sec_menu{
+            position: absolute;
+            bottom: 10%;
+            width: 100%;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+
+            li:nth-child(3){
+                margin-top: 10px;
+            }
+            
+            li:nth-child(3) a, li:nth-child(4) a{
+                font-weight: 300;
+            }
+        }
+
+    }
 }
 
 header{
     position: relative;
+    background-color: $green;
+    height: 70vh;
+    min-height: 470px;
+    margin: 7.9vh 0 80px;
+    padding: 30px 20px;
+    z-index: 40;
+    
+    div.intro{
+        margin: 15% auto 0;
+        position: relative;
+        max-width: 500px;
 
-    h1{
-        font-size: 3rem;
-        color: red;
-        border: 1px solid right;
+        #headline{
+            display: inline-block;
+            position: relative;
+            z-index: 100;
+            width: 100%;
+            margin: 0 auto;
+
+            img{
+                display: block;
+                max-width: 90%;
+                // margin: 0 auto;
+            }
+        }
+        #headline::before{
+            content: '';
+            width: 150px;
+            height: 150px;
+            background-color: $orange;
+            border-radius: 50%;
+            position: absolute;
+            margin-top: -75px;
+            left: -50px;
+            top: 50%;
+            z-index: -1;
+        }
+
+
+        h1{
+            position: relative;
+            margin: 15% 0 10%; 
+            width: 75%;
+            font-size: 1.1em;
+            z-index: 110;
+        }
+
+        div.search{
+            height: 40px;
+            display: flex;
+            align-items: center;
+
+            div{
+                display: inline-flex;
+                align-items: center;
+                background-color: $yellow;
+                padding: 10px;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+            div img{
+                width: 20px;
+            }
+
+            input{
+                background-color: transparent;
+                outline: none;
+                vertical-align: middle;
+                width: 200px;
+                margin-left: 10px;
+                padding: 5px 10px;
+                border-radius: 10px;
+            }
+            input::placeholder{
+                font-family: 'Poppins', sans-serif;
+                color: black;
+                font-size: 1.2em;
+            }
+            input:focus{
+                background-color: rgba(255,255,255, 0.2);
+                font-family:  'Poppins', sans-serif;
+                font-size: .68em;
+            }
+        }
+        
     }
+    div.bubbles {
+        position: absolute;
+        bottom: 0;
+        right: 30px;
+        width: 90%;
+        max-width: 500px;
+
+        img.big_bubble{
+            width: 200px;
+            position: absolute;
+            bottom: -80px;
+            right: 0;
+        }
+        img.small_bubble{
+            width: 80px;
+            position: absolute;
+            bottom: -70px;
+            right: 170px;
+            max-width: 200px;
+        }
+        &::after{
+            content: '';
+            width: 40px;
+            height: 40px;
+            background-color: $orange;
+            border-radius: 50%;
+            position: absolute;
+            right: -15px;
+            bottom: -25px;
+        }
+    }
+}
+
+section{
+    padding: 30px 20px;
+    height: 100vh;
 }
