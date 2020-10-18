@@ -4,10 +4,12 @@ import _ from 'lodash';
 // -- Toggle burger menu class -- //
 let burger = document.getElementById("burger");
 let menu = document.getElementById("menu");
+let shade = document.getElementById("shade");
 
 burger.addEventListener("click", ()=>{
   burger.classList.toggle("open");
   menu.classList.toggle("opened");
+  shade.classList.toggle("opened");
 })
 
 

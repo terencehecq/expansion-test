@@ -2,7 +2,7 @@ $orange: #EA5B0C;
 $green: #C1DFC4;
 $yellow: #FED386;
 
-
+// Little reset
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +12,7 @@ $yellow: #FED386;
 
 body{font-family: 'Poppins', sans-serif;}
 
+// Orange details
 em{color: $orange; font-style: normal;}
 
 nav{
@@ -19,8 +20,7 @@ nav{
     top: 0;
     left: 0;
     width: 100%;
-    height: 8vh;
-    min-height: 50px;
+    height: 50px;
     background-color: $green;
     display: flex;
     justify-content: space-between;
@@ -29,15 +29,16 @@ nav{
     &>a{
         margin-left: 15px;
         align-self: center;
+        z-index: 1100;
         img{
-            height: 7vh;
+            height: 50px;
             vertical-align: middle;
         }
     }
 
     div.burger{
-        width: 6vh;
-        height: 5vh;
+        width: 40px;
+        height: 35px;
         position: relative;
         margin-right: 15px;
         transform: rotate(0deg);
@@ -45,11 +46,12 @@ nav{
         cursor: pointer;
         align-self: center;
         outline: none;
+        z-index: 1100;
 
         span{
             display: block;
             position: absolute;
-            height: 1vh;
+            height: 7px;
             width: 100%;
             background: $orange;
             border-radius: 3px;
@@ -59,18 +61,18 @@ nav{
             transition: .25s ease-in-out;
         }
         span:nth-child(1) {
-            top: 0.2vh;
+            top: 1px;
         }
         span:nth-child(2), span:nth-child(3) {
-            top: 2vh;
+            top: 14px;
         }
         span:nth-child(4) {
-            top: 3.8vh;
+            top: 27px;
         }
 
         &.open {
             span:nth-child(1), span:nth-child(4){
-                top: 2vh;
+                top: 14px;
                 width: 0%;
                 left: 50%;
             }
@@ -82,22 +84,25 @@ nav{
             }
         }
     }
-
+    div#shade{display: none;}
     div.menu{
         background-color: $green;
         position: absolute;
         right: -100%;
-        top: 7.8vh;
+        top: 49px;
         width: 100%;
-        height: 93vh;
-        min-height: 550px;
+        height: 95vh;
         text-align: center;
         padding-top: 30px;
-        transition: all .5s ease ;
+        transition: right .5s ease ;
         overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &.opened{
             right: 0;
+            transition: right .5s ease ;
         }
 
         ul{
@@ -131,18 +136,17 @@ nav{
 
             li ul.main_opened{
                 max-height: 200px;
-                // transition: max-height .5s ease;
+                transition: max-height 1s ease;
 
             }
         }
         ul.sec_menu{
-            position: absolute;
-            bottom: 10%;
             width: 100%;
             text-align: center;
             line-height: 1.8em;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 600;
+            margin-bottom: 10%;
 
             li:nth-child(3){
                 margin-top: 10px;
@@ -161,14 +165,19 @@ header{
     background-color: $green;
     height: 70vh;
     min-height: 470px;
-    margin: 7.9vh 0 80px;
+    margin: 49px 0 80px;
     padding: 30px 20px;
     z-index: 40;
     
     div.intro{
-        margin: 15% auto 0;
+        margin: 40px auto 0;
         position: relative;
         max-width: 500px;
+        height: 45vh;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
 
         #headline{
             display: inline-block;
@@ -195,12 +204,11 @@ header{
             top: 50%;
             z-index: -1;
         }
-
-
         h1{
             position: relative;
-            margin: 15% 0 10%; 
+            margin-top: 50px; 
             width: 75%;
+            max-width: 300px;
             font-size: 1.1em;
             z-index: 110;
         }
@@ -250,7 +258,6 @@ header{
         bottom: 0;
         right: 30px;
         width: 90%;
-        max-width: 500px;
 
         img.big_bubble{
             width: 200px;
@@ -263,7 +270,6 @@ header{
             position: absolute;
             bottom: -70px;
             right: 170px;
-            max-width: 200px;
         }
         &::after{
             content: '';
@@ -279,6 +285,119 @@ header{
 }
 
 section{
+    width: 100%;
     padding: 30px 20px;
     height: 100vh;
+
+    h3{
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+
+@media screen and (min-width: 600px){
+    nav{
+        div#shade{
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color .5s ease;
+        }
+        div#shade.opened{
+            left: 0;
+            width: 100%;
+            height:95vh;
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: background-color .5s ease;
+        }
+        div.menu{
+            width: 45%;
+            max-width: 320px;
+        }
+    }
+
+    header{
+        min-height: 550px;
+        div.intro{
+            height: 60vh;
+            min-height: 450px;
+            #headline {
+                img{
+                    max-width: 100%;
+                }
+            }
+            #headline::before{
+                width: 180px;
+                height: 180px;
+                left: -75px;
+                top: 50%;
+            }
+            h1{
+                font-size: 1.3em;
+            }
+        }
+
+        div.bubbles{
+            img.big_bubble{
+                width: 280px;
+                bottom: -100px;
+            }
+            img.small_bubble{
+                width: 110px;
+                bottom: -80px;
+                right: 230px;
+            }
+            &::after{
+                width: 60px;
+                height: 60px;
+                right: -20px;
+                bottom: -20px
+            }
+        }
+    }
+    section h3{
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (min-width: 768px){
+
+    header div.intro {
+        max-width: 600px;
+
+        #headline::before{
+            width: 200px;
+            height: 200px;
+            left: -120px;
+            top: 20%;
+        }
+
+        h1{
+            font-size: 1.5em;
+        }
+    }
+
+    header div.bubbles{
+        img.big_bubble{
+            width: 340px;
+        }
+        img.small_bubble{
+            width: 130px;
+            right: 280px;
+        }
+    }
+
+    section h3{
+        max-width: 600px;
+        font-size: 1.4em;
+    }
+}
+
+
+@media screen and (min-width: 1000px){
+
+    
 }
