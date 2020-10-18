@@ -7,11 +7,16 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  position: relative;
 }
 
 em {
   font-style: normal;
   color: #ea5b0c;
+}
+
+div#cursor {
+  display: none;
 }
 
 nav {
@@ -132,9 +137,25 @@ nav div.menu ul.main_menu {
   margin: 0 0 10%;
 }
 
-nav div.menu ul.main_menu li {
+nav div.menu ul.main_menu > li {
   margin-bottom: 10px;
-  transition: max-height .5s ease;
+  cursor: pointer;
+}
+
+nav div.menu ul.main_menu > li::after {
+  position: absolute;
+  bottom: 3px;
+  left: 30%;
+  width: 40%;
+  height: 2px;
+  content: '';
+  transition: transform .2s linear;
+  transform: scaleX(0);
+  background-color: #ea5b0c;
+}
+
+nav div.menu ul.main_menu > li:hover::after {
+  transform: scaleX(1);
 }
 
 nav div.menu ul.main_menu li ul {
@@ -152,6 +173,18 @@ nav div.menu ul.main_menu li ul.main_opened {
   transition: max-height 1s ease;
 }
 
+nav div.menu ul.main_menu li ul.main_opened li a {
+  transition: color .2s ease;
+}
+
+nav div.menu ul.main_menu li ul.main_opened li a:hover {
+  color: #ea5b0c;
+}
+
+nav div.menu #more {
+  display: none;
+}
+
 nav div.menu ul.sec_menu {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
@@ -159,6 +192,14 @@ nav div.menu ul.sec_menu {
   width: 100%;
   margin-bottom: 10%;
   text-align: center;
+}
+
+nav div.menu ul.sec_menu li a {
+  transition: color .3s ease;
+}
+
+nav div.menu ul.sec_menu li a:hover {
+  color: #ea5b0c;
 }
 
 nav div.menu ul.sec_menu li:nth-child(3) {
@@ -247,11 +288,13 @@ header div.intro div.search div img {
 }
 
 header div.intro div.search input {
+  position: relative;
   width: 200px;
   margin-left: 10px;
   padding: 5px 10px;
+  transition: all .3s ease;
   vertical-align: middle;
-  border-radius: 10px;
+  border-bottom: 1px solid transparent;
   outline: none;
   background-color: transparent;
 }
@@ -265,7 +308,9 @@ header div.intro div.search input::placeholder {
 header div.intro div.search input:focus {
   font-family: 'Poppins', sans-serif;
   font-size: .68em;
-  background-color: rgba(255, 255, 255, .2);
+  transition: all .3s ease;
+  transform: scale(1.03);
+  border-bottom: 1px solid black;
 }
 
 header div.bubbles {
@@ -382,6 +427,24 @@ section h3 {
 }
 
 @media screen and (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
+
+  div#cursor {
+    position: absolute;
+    z-index: 10000;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ea5b0c;
+  }
+
+  header {
+    min-height: 600px;
+  }
+
   header div.intro {
     max-width: 600px;
   }
@@ -398,7 +461,7 @@ section h3 {
   }
 
   header div.bubbles img.big_bubble {
-    width: 340px;
+    width: 360px;
   }
 
   header div.bubbles img.small_bubble {
@@ -409,5 +472,215 @@ section h3 {
   section h3 {
     font-size: 1.4em;
     max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  nav {
+    height: 80px;
+    align-items: center;
+  }
+
+  nav div.burger {
+    display: none;
+  }
+
+  nav div.shade {
+    display: none;
+  }
+
+  nav div.menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: grid;
+    overflow: visible;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    padding: 0;
+    grid-template-columns: 2fr 3fr 2fr;
+  }
+
+  nav div.menu ul.main_menu {
+    font-size: 1em;
+    display: flex;
+    margin: 0;
+    grid-column: 2/3;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  nav div.menu ul.main_menu li {
+    position: relative;
+    margin: 0;
+  }
+
+  nav div.menu ul.main_menu li ul {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+    width: 100%;
+    margin: 0;
+    transition: opacity .3s ease;
+    opacity: 0;
+    border-radius: 0 0 3px 3px;
+    background-color: #c1dfc4;
+  }
+
+  nav div.menu ul.main_menu li ul.main_opened {
+    line-height: 2.2;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  nav div.menu ul.sec_menu {
+    font-size: .9em;
+    position: relative;
+    display: flex;
+    margin: 0;
+    background-color: #c1dfc4;
+    align-items: center;
+    justify-content: center;
+    grid-column: 3/4;
+  }
+
+  nav div.menu ul.sec_menu #more {
+    font-weight: 400;
+    display: inline;
+    cursor: pointer;
+    user-select: none;
+    transition: color .3s ease;
+  }
+
+  nav div.menu ul.sec_menu #more.sec_opened,
+    nav div.menu ul.sec_menu #more:hover {
+    color: #ea5b0c;
+  }
+
+  nav div.menu ul.sec_menu span {
+    position: absolute;
+    bottom: -100px;
+    display: block;
+    visibility: hidden;
+    width: 80%;
+    transition: opacity .4s ease;
+    opacity: 0;
+    border-radius: 0 0 3px 3px;
+    background-color: #c1dfc4;
+  }
+
+  nav div.menu ul.sec_menu span li:nth-child(3) {
+    margin: 0;
+  }
+
+  nav div.menu ul.sec_menu span.sec_opened {
+    line-height: 2.2em;
+    visibility: visible;
+    transition: opacity .4s ease;
+    opacity: 1;
+  }
+
+  header {
+    height: 94vh;
+    min-height: 750px;
+  }
+
+  header div.intro {
+    max-width: 750px;
+    height: 65vh;
+    min-height: 650px;
+  }
+
+  header div.intro #headline::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  header div.bubbles img.big_bubble {
+    bottom: -200px;
+    width: 580px;
+  }
+
+  header div.bubbles img.small_bubble {
+    right: 480px;
+    bottom: -120px;
+    width: 200px;
+  }
+
+  header div.bubbles::after {
+    bottom: -30px;
+    width: 80px;
+    height: 80px;
+  }
+
+  section h3 {
+    max-width: 750px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  nav div.menu {
+    text-align: center;
+  }
+
+  nav div.menu ul.sec_menu li#more {
+    display: none;
+  }
+
+  nav div.menu ul.sec_menu span {
+    font-size: .8em;
+    position: static;
+    display: flex;
+    visibility: visible;
+    flex-direction: row;
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+    opacity: 1;
+    justify-content: space-around;
+  }
+
+  nav div.menu ul.sec_menu span li:nth-child(3) {
+    margin-left: 15px;
+  }
+
+  header {
+    min-height: 750px;
+  }
+
+  header div.intro {
+    max-width: 850px;
+  }
+
+  header div.intro min
+    #headline::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  header div.intro h1 {
+    font-size: 1.6em;
+    max-width: 350px;
+  }
+
+  header div.bubbles div.big_bubble {
+    bottom: -230px;
+    width: 730px;
+  }
+
+  header div.bubbles::after {
+    width: 100px;
+    height: 100px;
+  }
+
+  section h3 {
+    max-width: 850px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  header div.intro {
+    max-width: 950px;
   }
 }

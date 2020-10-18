@@ -10,11 +10,11 @@ $yellow: #FED386;
     box-sizing: border-box;
 }
 
-body{font-family: 'Poppins', sans-serif;}
+body{font-family: 'Poppins', sans-serif; position: relative;}
 
 // Orange details
 em{color: $orange; font-style: normal;}
-
+div#cursor{display:none;}
 nav{
     position: fixed;
     top: 0;
@@ -119,9 +119,23 @@ nav{
             line-height: 2em;
             margin: 0 0 10%;
 
-            li{
+            &>li{
                 margin-bottom: 10px;
-                transition: max-height .5s ease;
+                cursor: pointer;
+                &::after{
+                    content : "";
+                    position : absolute;
+                    width : 40%;
+                    height : 2px;
+                    background-color: $orange;
+                    bottom: 3px;
+                    left: 30%;
+                    transform: scaleX(0);
+                    transition: transform .2s linear;
+                }
+                &:hover::after{
+                    transform: scaleX(1);
+                }
             }
 
             li ul{
@@ -138,8 +152,16 @@ nav{
                 max-height: 200px;
                 transition: max-height 1s ease;
 
+                li a{transition: color .2s ease;}
+
+                li a:hover{
+                    color:$orange;
+                }
+                
             }
         }
+
+        #more{display: none;}
         ul.sec_menu{
             width: 100%;
             text-align: center;
@@ -147,6 +169,14 @@ nav{
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 600;
             margin-bottom: 10%;
+
+            li a{
+                transition: color .3s ease;
+            }
+
+            li a:hover{
+                color: $orange;
+            }
 
             li:nth-child(3){
                 margin-top: 10px;
@@ -238,7 +268,9 @@ header{
                 width: 200px;
                 margin-left: 10px;
                 padding: 5px 10px;
-                border-radius: 10px;
+                position: relative;
+                border-bottom: 1px solid transparent;
+                transition: all .3s ease;
             }
             input::placeholder{
                 font-family: 'Poppins', sans-serif;
@@ -246,9 +278,11 @@ header{
                 font-size: 1.2em;
             }
             input:focus{
-                background-color: rgba(255,255,255, 0.2);
                 font-family:  'Poppins', sans-serif;
                 font-size: .68em;
+                border-bottom: 1px solid black;
+                transform: scale(1.03);
+                transition: all .3s ease;
             }
         }
         
@@ -365,24 +399,37 @@ section{
 
 @media screen and (min-width: 768px){
 
-    header div.intro {
-        max-width: 600px;
+    *{cursor: none !important;}
+    div#cursor{
+        display:block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $orange;
+        z-index: 10000;
+    }
+    header {
+        min-height: 600px;
+        div.intro {
+            max-width: 600px;
 
-        #headline::before{
-            width: 200px;
-            height: 200px;
-            left: -120px;
-            top: 20%;
-        }
+            #headline::before{
+                width: 200px;
+                height: 200px;
+                left: -120px;
+                top: 20%;
+            }
 
-        h1{
-            font-size: 1.5em;
+            h1{
+                font-size: 1.5em;
+            }
         }
     }
 
     header div.bubbles{
         img.big_bubble{
-            width: 340px;
+            width: 360px;
         }
         img.small_bubble{
             width: 130px;
@@ -399,5 +446,208 @@ section{
 
 @media screen and (min-width: 1000px){
 
-    
+    nav{
+        height: 80px;
+        align-items: center;
+        div.burger{
+            display: none;
+        }
+        div.shade{display: none;}
+        div.menu{
+            position: relative;
+            display: grid;
+            grid-template-columns: 2fr 3fr 2fr;
+            max-width: none;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            overflow: visible;
+
+            ul.main_menu{
+                grid-column: 2/3;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin: 0;
+                font-size: 1em;
+                li{
+                    position: relative;
+                    margin: 0;
+                    ul{
+                        position: absolute;
+                        display: block;
+                        width: 100%;
+                        background-color: $green;
+                        border-radius: 0 0 3px 3px;
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: opacity .3s ease;
+                        margin: 0;
+                    }
+                    ul.main_opened{
+                        visibility: visible;
+                        opacity: 1;
+                        line-height: 2.2
+                    }
+                }
+            }
+
+            ul.sec_menu{
+                position: relative;
+                display: flex;
+                font-size: .9em;
+                margin: 0;
+                align-items: center;
+                justify-content: center;
+                background-color: $green;
+                grid-column: 3/4;
+                
+                #more{
+                    display: inline;
+                    cursor: pointer;
+                    font-weight: 400;
+                    user-select: none;
+                    transition: color .3s ease;
+
+                    &.sec_opened, &:hover{
+                        color: $orange;
+                    }
+                }
+
+                span{
+                    position: absolute;
+                    display: block;
+                    width: 80%;
+                    background-color: $green;
+                    border-radius: 0 0 3px 3px;
+                    bottom: -100px;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: opacity .4s ease;
+
+                    li:nth-child(3){
+                        margin: 0;
+                    }
+                }
+
+                span.sec_opened{
+                    visibility: visible;
+                    opacity: 1;
+                    line-height: 2.2em;
+                    transition: opacity .4s ease;
+                }
+
+            }
+
+
+        }
+    }
+
+
+    header{
+        height: 94vh;
+        min-height: 750px;
+        div.intro{
+            min-height: 650px;
+            height: 65vh;
+            max-width: 750px;
+
+            #headline::before{
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        div.bubbles{
+            img.big_bubble{
+                bottom: -200px;
+                width: 580px;
+            }
+            img.small_bubble{
+                width: 200px;
+                right: 480px;
+                bottom: -120px;
+            }
+            &::after{
+                width: 80px;
+                height: 80px;
+                bottom: -30px;
+            }
+        }
+    }
+
+    section h3{
+        max-width: 750px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+
+    nav{
+        div.menu{
+
+            text-align: center;
+            ul.sec_menu{
+                li#more{display: none;}
+                span{
+                    position: static;
+                    opacity: 1;
+                    visibility: visible;
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    justify-content: space-around;
+                    font-size: .8em;
+                    max-width: 270px;
+                    margin: 0 auto;
+
+                    li:nth-child(3){
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    header{
+        min-height: 750px;
+        div.intro{
+            max-width: 850px;
+            min
+
+            #headline::before{
+                width: 280px;
+                height: 280px;
+            }
+
+            h1{
+                max-width: 350px;
+                font-size: 1.6em;
+            }
+        }
+
+        div.bubbles{
+            div.big_bubble{
+                width: 730px;
+                bottom: -230px;
+            }
+            &::after{
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+
+    section h3{
+        max-width: 850px;
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+    header div.intro{
+        max-width: 950px;
+    }
 }

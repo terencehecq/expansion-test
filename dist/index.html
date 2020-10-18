@@ -11,6 +11,9 @@
 </head>
 <body>
 
+    <!-- Cursor -->
+    <div id="cursor"></div>
+
     <nav>
         <a href="#"><img src="./img/Binche_logo.png" alt="Logo de la ville de Binche"></a>
         <div id="burger" class="burger">
@@ -22,36 +25,39 @@
         <div id="shade"></div>
         <div class="menu" id="menu">
             <ul class="main_menu">
-                <li><a href="#">Ma ville <em>&dtrif;</em></a>
+                <li>Ma ville <em>&dtrif;</em>
                     <ul>
-                        <li>link 1</li>
-                        <li>link 2</li>
-                        <li>link 3</li>
+                        <li><a>link 1</a></li>
+                        <li><a>link 2</a></li>
+                        <li><a>link 3</a></li>
                     </ul>
                 </li>
                 
-                <li><a href="#">Vivre à Binche <em>&dtrif;</em></a>
+                <li>Vivre à Binche <em>&dtrif;</em>
                     <ul>
-                        <li>link 1</li>
-                        <li>link 2</li>
-                        <li>link 3</li>
+                        <li><a>link 1</a></li>
+                        <li><a>link 2</a></li>
+                        <li><a>link 3</a></li>
                     </ul>
                 </li>
                 
-                <li><a href="#">Que faire à Binche <em>&dtrif;</em></a>
+                <li>Que faire à Binche <em>&dtrif;</em>
                     <ul>
-                        <li>link 1</li>
-                        <li>link 2</li>
-                        <li>link 3</li>
+                        <li><a>link 1</a></li>
+                        <li><a>link 2</a></li>
+                        <li><a>link 3</a></li>
                     </ul>
                 </li>
                 
             </ul>
             <ul class="sec_menu">
-                <li><a href="#">Je suis</a></li>
-                <li><a href="#">Je trouve</a></li>
-                <li><a href="#">Se connecter</a></li>
-                <li><a href="#">Contact</a></li>
+                <li id="more"><p>Plus <em>&plus;</em></p></li>
+                <span>
+                    <li><a href="#">Je suis</a></li>
+                    <li><a href="#">Je trouve</a></li>
+                    <li><a href="#">Se connecter</a></li>
+                    <li><a href="#">Contact</a></li>
+                </span>
             </ul>
         </div>
     </nav>
@@ -63,7 +69,7 @@
             <h1>Une ville proche du citoyen, qui informe au mieux la population de la vie communale</h1>
             <div class="search">
                 <div><img src="./img/search.svg" alt="icone loupe"></div>
-                <input type="text" name="search" placeholder="Que cherchez-vous ?">
+                <input type="text" name="search" placeholder="Que cherchez-vous ?" autocomplete="off">
             </div>
         </div>
 

@@ -1,6 +1,19 @@
 import _ from 'lodash';
 
 
+// -- Cursor -- //
+let cursor = document.getElementById('cursor');
+
+document.addEventListener('mousemove', (e)=>{
+  let x = e.pageX; 
+  let y = e.pageY; 
+
+  cursor.style.left = x + 'px';
+  cursor.style.top = (y -47) + 'px';
+});
+
+
+
 // -- Toggle burger menu class -- //
 let burger = document.getElementById("burger");
 let menu = document.getElementById("menu");
@@ -27,3 +40,13 @@ mainLinks.forEach((link)=>{
     }
   })
 })
+
+// -- Toggle drop "Plus" menu -- //
+let more = document.getElementById("more");
+
+more.addEventListener("click", ()=>{
+  more.classList.toggle("sec_opened")
+  more.nextElementSibling.classList.toggle("sec_opened");
+})
+
+
