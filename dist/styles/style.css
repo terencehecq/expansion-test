@@ -138,6 +138,7 @@ nav div.menu ul.main_menu {
 }
 
 nav div.menu ul.main_menu > li {
+  position: relative;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -433,12 +434,26 @@ section h3 {
 
   div#cursor {
     position: absolute;
-    z-index: 10000;
+    z-index: 1010;
     display: block;
     width: 10px;
     height: 10px;
+    transition: left .1s ease, top .1s ease;
+    transition: transform .2s ease;
+    transition-duration: .3s;
+    transition-property: width, height, background-color, border;
+    transform: translate(0, 0);
+    pointer-events: none;
     border-radius: 50%;
     background-color: #ea5b0c;
+  }
+
+  div#cursor.hover {
+    width: 52px;
+    height: 52px;
+    transform: translate(-40%, -40%);
+    border: 2px dashed #ea5b0c;
+    background-color: transparent;
   }
 
   header {
@@ -458,6 +473,16 @@ section h3 {
 
   header div.intro h1 {
     font-size: 1.5em;
+  }
+
+  header div.intro div.search #search_icon {
+    z-index: 1120;
+    transition: all .2s ease;
+  }
+
+  header div.intro div.search #search_icon.hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .3);
   }
 
   header div.bubbles img.big_bubble {
@@ -568,6 +593,10 @@ section h3 {
     opacity: 0;
     border-radius: 0 0 3px 3px;
     background-color: #c1dfc4;
+  }
+
+  nav div.menu ul.sec_menu span li a {
+    padding: 5px;
   }
 
   nav div.menu ul.sec_menu span li:nth-child(3) {
