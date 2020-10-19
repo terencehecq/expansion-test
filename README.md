@@ -18,14 +18,13 @@
 
 Ensuite, dans le dossier du projet : 
 
-
 ```
 npm install
 npm start
 ```
 
-Le serveur est sur le localhost:3000/
+Le serveur est sur le [localhost:3000](http://localhost:3000/) ou [127.0.0.1:3000](http://127.0.0.1:3000/)
 
 
 
-Réalisé entre le 12/10 et le 19/10/2020
+Réalisé entre le 12/10 et le 19/10/2020.
