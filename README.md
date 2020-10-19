@@ -18,11 +18,13 @@
 
 Ensuite, dans le dossier du projet : 
 
+
 ```
+npm install
 npm start
 ```
 
-Le serveur est sur le Localhost:3000
+Le serveur est sur le localhost:3000/
 
 
 
