@@ -26,7 +26,7 @@ npm start
 Le serveur est sur le [localhost:3000](http://localhost:3000/) ou [127.0.0.1:3000](http://127.0.0.1:3000/)
 
 
-Je reste à votre entière disposition pour toute question conncernant mon travail.
+Je reste à votre entière disposition pour toute question concernant mon travail.
 
 
 Réalisé entre le 12/10 et le 19/10/2020.
