@@ -13,7 +13,7 @@
 ### Installation du projet
 
 ```
-    Git clone https://github.com/terencehecq/expansion-test.git
+Git clone https://github.com/terencehecq/expansion-test.git
 ```
 
 Ensuite, dans le dossier du projet : 
