@@ -12,8 +12,8 @@ document.addEventListener('mousemove', (e)=>{
   let x = e.pageX;
   let y = e.pageY;
 
-  cursor.style.left = (x-5) + 'px';
-  cursor.style.top = (y-55) + 'px';
+  cursor.style.left = x + 'px';
+  cursor.style.top = y + 'px';
 
   // hover on search
   let searchPos = search.getBoundingClientRect();

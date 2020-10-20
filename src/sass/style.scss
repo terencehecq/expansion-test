@@ -411,7 +411,7 @@ section{
         border-radius: 50%;
         background-color: $orange;
         z-index: 1010;
-        transform: translate(0, 0);
+        transform: translate(-50%, -50%);
         pointer-events: none;
         transition: left .1s ease, top .1s ease;
         transition-property: width, height, background-color, border;
